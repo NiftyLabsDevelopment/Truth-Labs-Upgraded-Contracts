@@ -2898,7 +2898,7 @@ contract goblintownNFT is ERC721A, Ownable, RevokableDefaultOperatorFilterer, Re
     uint256 public goblins = 9999;
     bool public byeeebyeee = false;
 
-	constructor() ERC721A("goblintown", "GOBLIN") {}
+    constructor() ERC721A("goblintown", "GOBLIN") {}
 
     function _baseURI() internal view virtual override returns(string memory) {
         return _partslink;
@@ -2927,9 +2927,9 @@ contract goblintownNFT is ERC721A, Ownable, RevokableDefaultOperatorFilterer, Re
     }
 
     function sumthinboutfunds() public payable onlyOwner {
-	(bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
+	    (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
 		require(success);
-	}
+    }
 
     function setApprovalForAll(
         address operator,
