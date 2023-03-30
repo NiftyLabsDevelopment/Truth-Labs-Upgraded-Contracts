@@ -2927,8 +2927,8 @@ contract goblintownNFT is ERC721A, Ownable, RevokableDefaultOperatorFilterer, Re
     }
 
     function sumthinboutfunds() public payable onlyOwner {
-	    (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
-		require(success);
+        (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(success);
     }
 
     function setApprovalForAll(
