@@ -76,10 +76,6 @@ contract Illuminati is ERC721AOpensea {
 
     constructor() ERC721A("Illuminati", "Truth") ERC721AOpensea() {}
 
-    function _baseURI() internal view virtual override returns(string memory) {
-        return _metadata;
-    }
-
     function airdrop(uint256[] calldata _amount, address[] calldata _wallet) public onlyOwner {
         for(uint256 i = 0; i < _wallet.length; i++)  { 
             require(totalSupply() + _amount[i] <= tokens);
@@ -93,13 +89,17 @@ contract Illuminati is ERC721AOpensea {
         _burn(tokenId, false);        
     }
 
-    function updateMetadata(string memory _uri) external onlyOwner {
-        _metadata = _uri;
-    }
-
     function setBurn(address _burnContract, bool _status) public onlyOwner {
         burnContract = _burnContract;
         burnActive = _status;
+    }
+
+    function _baseURI() internal view virtual override returns(string memory) {
+        return _metadata;
+    }
+
+    function updateMetadata(string memory _uri) external onlyOwner {
+        _metadata = _uri;
     }
 
     function withdraw() public payable onlyOwner {
