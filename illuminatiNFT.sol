@@ -77,10 +77,9 @@ contract Illuminati is ERC721AOpensea {
     constructor() ERC721A("Illuminati", "Truth") ERC721AOpensea() {}
 
     function airdrop(address[] calldata _wallet) public onlyOwner {
-        for(uint256 i = 0; i < _wallet.length; i++)  { 
-            require(totalSupply() + _amount[i] <= tokens);
+        require(totalSupply() + _wallet.length <= tokens);
+        for(uint256 i = 0; i < _wallet.length; i++)
             _mint(_wallet[i], 1);
-        }
     }
 
     function burn(uint256 tokenId) external {
