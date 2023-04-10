@@ -85,7 +85,7 @@ contract Illuminati is ERC721AOpensea {
     function burn(uint256 tokenId) external {
         require(burnActive);
         require(msg.sender == burnContract);
-        _burn(tokenId, false);        
+        _burn(tokenId);        
     }
 
     function setBurn(address _burnContract, bool _status) public onlyOwner {
